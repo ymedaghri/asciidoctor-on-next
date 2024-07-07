@@ -1,0 +1,14 @@
+= {projectName} 
+MEDAGHRI Youssef <ymedaghrialaoui@ippon.fr>;
+:doctype: book
+:toc: macro
+:toclevels: 3
+:sectnums:
+:revdate: 2024-06-28
+:projectName: ASCIIDOCTOR-ON-NEXT
+:revnumber: 1.0
+:icons: font
+:experimental: true
+:source-highlighter: highlight.js
+
+include::chapter1.adoc[]
