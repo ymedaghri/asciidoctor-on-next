@@ -1,1 +1,202 @@
 == Bienvenue , construisons notre documentation ensemble
+
+=== Personnes à contacter
+
+[%autowidth]
+|===
+|Nom |EMail |Rôle
+
+|ORHANT Ludivine
+|lorant@ippon.fr
+|Développeuse
+
+|=== 
+
+=== Présentation du projet
+
+.Prerequis
+****
+** Avoir installé nodeJS sur sa machine
+****
+
+[NOTE]
+Compatible a partir de la version node 18
+
+
+=== Réunion du Lundi 23 : Conclusions
+
+Implementer le board grafana suivant
+
+.Supervision JVM
+****
+====
+Paramètre : Site (NOE, PACY)
+====
+====
+Métriques -> on industrialise et on complète ceci +
+https://idatha-expert.enedis.fr/d/A_dfgc187eye/ic1-supervision-jvm?orgId=1&refresh=1m
+
+|===
+|Description| Réalisé ( icon:square-o[] icon:check-square[] )
+
+|Load Average 
+|icon:square-o[]
+
+|Heap Usage
+|icon:square-o[]
+
+|MetaSpace
+|icon:square-o[]
+
+|GC Pause
+|icon:square-o[]
+
+|GC Activity
+|icon:square-o[]
+
+|Threads (nombre, busy) idéalement dans le même panel, sinon on les sépare
+|icon:square-o[]
+
+|Connexions BD
+|icon:square-o[]
+
+|Mem
+|icon:square-o[]
+
+|CPU
+|icon:square-o[]
+
+|Swap
+|icon:square-o[]
+
+|JDBC Pool Size
+|icon:square-o[]
+
+|JDBC Active Threads
+|icon:square-o[]
+
+|JDBC Idle Threads
+|icon:square-o[]
+
+|===
+====
+****
+
+=== Keyboard syntax
+
+Vous pouver à l'aide de kbd:[Ctrl+T] faire bla bla
+
+[plantuml, ./images/plantuml/my-diagram-c4model, png]
+----
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+ Person(user, "Policyholder", "wants to insure its hoverboard 🛹", $sprite="users")
+  System_Ext(pricing, ".NET", "Pricing Engine")
+
+  Enterprise_Boundary(coolCover, "CoolCover Company©") {
+      Container(spa, "B2C Funnel SPA", "angular", "Policy subscription tunnel", $sprite="angular")
+      Container(api, "Policy distribution API", ".NET", "Registers new policy", $sprite="dotnet")
+      ContainerDb(db, "Database", "PostgreSQL", "Holds product, order and invoice information", $sprite="postgresql")
+      ContainerDb(dbMongo, "Other Database", "Mongo", "Holds documents", $sprite="postgresql")
+  }
+
+  Rel(user, spa, "subscribes", "https")
+  Rel(spa, pricing, "generates a quote", "POST https/json")
+  Rel(spa, api, "Issues a new policy", "POST https/json")
+  Rel_R(api, db, "Writes")
+
+  Rel_R(spa, dbMongo, "Persists")
+@enduml
+----
+
+
+==== Multiligne avec Code
+
+[plantuml, ./images/plantuml/my-diagram-mindmap-3, png]
+----
+@startmindmap
+* Class Templates
+**:Example 1
+<code>
+template <typename T>
+class cname{
+void f1()<U+003B>
+...
+}
+</code>
+;
+**:Example 2
+<code>
+other template <typename T>
+class cname{
+...
+</code>
+;
+@endmindmap
+----
+
+=== YAML icon:heart[fw]
+
+[plantuml, ./images/plantuml/my-diagram-yaml-1, png]
+----
+@startyaml
+#highlight "french-hens"
+#highlight "xmas-fifth-day" / "partridges"
+
+doe: "a deer, a female deer"
+ray: "a drop of golden sun"
+pi: 3.14159
+xmas: true
+french-hens: 3
+calling-birds: 
+	- huey
+	- dewey
+	- louie
+	- fred
+xmas-fifth-day: 
+	calling-birds: four
+	french-hens: 3
+	golden-rings: 5
+	partridges: 
+		count: 1
+		location: "a pear tree"
+	turtle-doves: two
+@endyaml
+----
+
+
+=== JSON icon:heart[fw]
+
+[plantuml, ./images/plantuml/my-diagram-json-1, png]
+----
+@startjson
+#highlight "lastName"
+#highlight "address" / "city"
+#highlight "phoneNumbers" / "0" / "number"
+{
+  "firstName": "John",
+  "lastName": "Smith",
+  "isAlive": true,
+  "age": 28,
+  "address": {
+    "streetAddress": "21 2nd Street",
+    "city": "New York",
+    "state": "NY",
+    "postalCode": "10021-3100"
+  },
+  "phoneNumbers": [
+    {
+      "type": "home",
+      "number": "212 555-1234"
+    },
+    {
+      "type": "office",
+      "number": "646 555-4567"
+    }
+  ],
+  "children": [],
+  "spouse": null
+}
+@endjson
+----
